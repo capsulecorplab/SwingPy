@@ -1,6 +1,6 @@
 import swingpy as sp
 import pytest
-from math import e
+from numpy import e
 
 @pytest.fixture
 def jill():

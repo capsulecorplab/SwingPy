@@ -1,4 +1,3 @@
-from math import pi, e
 from scipy import signal
 import numpy as np
 
@@ -27,7 +26,7 @@ class Follower(object):
 
     def __init__(self):
         "response dynamics of follower"
-        self._wn = 2*pi # natural frequency: wn = sqrt(k/m)
+        self._wn = 2*np.pi # natural frequency: wn = sqrt(k/m)
         self._z = 1 # damping ratio: z = c/(2*wn*m)
         self._dt = 0.01 # interval for discrete time step, dt
         self._tao = 2*self._z*self._wn # time constant: tao = c/k = 2*z/wn
