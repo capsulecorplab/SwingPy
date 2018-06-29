@@ -1,1 +1,1 @@
-from swingpy.model import *
+from swingpy.dancer import *
