@@ -8,7 +8,7 @@ class Follower(object):
          _______    k
         |       |--/\/--|
         |   m   |       |
-        |_______|---D---|
+        |_______|--[=]--|
                     c
 
     Equation(s) of Motion: m*x_f'' = - k*x_f - c*x_f'' + k*r
