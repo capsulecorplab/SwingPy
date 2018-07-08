@@ -13,8 +13,8 @@ class Follower(object):
 
     Equation(s) of Motion: m*x_f'' = - k*x_f - c*x_f'' + k*r
     m: "mass" of follower
-    x_f: follower's position along slot
-    r: position of post along slot
+    x_f: follower's deviation from initial position along slot
+    r: deviation from initial position of post along slot
     k: "stiffness" in connection
     c: damping coefficient in connection
 
@@ -25,11 +25,11 @@ class Follower(object):
     """
 
     def __init__(self):
-        "response dynamics of follower"
+        "system parameters that dictate response dynamics of a follower"
         self._wn = 2*np.pi # natural frequency: wn = sqrt(k/m)
         self._z = 1 # damping ratio: z = c/(2*wn*m)
         self._dt = 0.01 # interval for discrete time step, dt
-        self._tao = 2*self._z*self._wn # time constant: tao = c/k = 2*z/wn
+        self._tau = 2*self._z*self._wn # time constant: tau = c/k = 2*z/wn
 
     def sugarpush(self):
         """returns multiple 1D arrays:
@@ -58,5 +58,5 @@ class Follower(object):
         return self._dt
 
     @property
-    def tao(self):
-        return self._tao
+    def tau(self):
+        return self._tau
