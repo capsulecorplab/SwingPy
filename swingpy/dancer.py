@@ -60,3 +60,16 @@ class Follower(object):
     @property
     def tau(self):
         return self._tau
+
+if __name__ == '__main__':
+    import matplotlib.pyplot as plt
+    jill = Follower()
+    t, y, u = jill.sugarpush()
+    plt.plot(t, u)
+    plt.plot(t, y)
+    plt.grid(which='major')
+    plt.title('push-break')
+    plt.ylabel('travel distance (w.r.t. initial-conditions)')
+    plt.xlabel('count')
+    plt.legend(['Post','Follower'])
+    plt.show()

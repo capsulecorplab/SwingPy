@@ -8,7 +8,7 @@ The goal of this project is to mathematically model the physics of west coast sw
 
 ## Background
 
-West Coast Swing (WCS) is a style of partner-dance, danced to a variety of music (s.a. blues, country, and modern-contemporary). Unlike most other style of dances, it can be difficult to add musicality to WCS. This is often due to most 4/4 [time-signature](https://en.wikipedia.org/wiki/Time_signature) music consisting of an "accent" or "break" on the odd count of every new measure or phrase change. In "dance-speak", this translates to beats counted in sets of 8 (a.k.a. "8-count") where an accent would often fall the 1st count. However, not all WCS patterns are 8-counts long, and not all patterns are inherently accented on their odd counts. Therefore, dancers (particularly, leaders) must be mindful of the timing, combination, or stylization of patterns, if they wish to abide by musicality principles.
+West Coast Swing (WCS) is a style of partner-dance, danced to a variety of music (s.a. blues, country, and modern-contemporary). Unlike most other style of dances, it can be difficult to add musicality to WCS. This is often due to most 4/4 [time-signature](https://en.wikipedia.org/wiki/Time_signature) music consisting of an "accent" or "break" on the odd count of every new measure or phrase change. In "dance-speak", this translates to beats counted in sets of 8 (a.k.a. "8-count") where an accent would often fall on the 1st count. However, not all WCS patterns are 8-counts long, and not all patterns are inherently accented on their odd counts. Therefore, dancers (particularly, leaders) must be mindful of the timing, combination, or stylization of patterns, if they wish to abide by musicality principles.
 
 ## Contribute
 
