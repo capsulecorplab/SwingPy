@@ -75,4 +75,11 @@ $ pytest -v
 4. Push to the branch (`git push origin feature/logarithms`)
 5. Create a new Pull Request
 
-Note: this project is still very much in early development. For any questions, comments, or suggestions (s.a. features, use cases, or design patterns), please feel free to submit a [new issue](https://github.com/capsulecorplab/SwingPy/issues/new).
+## Developer notes
+This project is still very much in early development. The physics model in its current state only accounts for translational movement in one dimension. Hence, next steps will be to expand state space model to allow for more complex patterns.
+Future features in consideration include, but not limited to:
+- Animation plug-in for visualizing the pattern generators in real-time.
+- Parser for reading midi files
+- Some sort of GUI
+
+For any questions, comments, or suggestions (s.a. features, use cases, or design patterns), please feel free to submit a [new issue](https://github.com/capsulecorplab/SwingPy/issues/new).
