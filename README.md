@@ -10,20 +10,53 @@ The goal of this project is to mathematically model the physics of west coast sw
 
 West Coast Swing (WCS) is a style of partner-dance, danced to a variety of music (s.a. blues, country, and modern-contemporary). Unlike most other style of dances, it can be difficult to add musicality to WCS. This is often due to most 4/4 [time-signature](https://en.wikipedia.org/wiki/Time_signature) music consisting of an "accent" or "break" on the odd count of every new measure or phrase change. In "dance-speak", this translates to beats counted in sets of 8 (a.k.a. "8-count") where an accent would often fall on the 1st count. However, not all WCS patterns are 8-counts long, and not all patterns are inherently accented on their odd counts. Therefore, dancers (particularly, leaders) must be mindful of the timing, combination, or stylization of patterns, if they wish to abide by musicality principles.
 
+## Model Formulation
+
+The mathematical model currently consists of a mass-spring-damper system, captured in the following free-body diagram
+
+```
+            -> x_f    -> r
+            |         |
+     _______     k
+    |       |---/\/---|
+    |   m   |         |
+    |_______|---[=]---|
+                 c
+
+Equation(s) of Motion: m*x_f'' = - k*x_f - c*x_f'' + k*r
+m: 'mass' of follower
+x_f: follower's deviation from initial position along slot
+r: deviation from initial position of post along slot
+k: 'stiffness' in connection
+c: damping coefficient in connection
+
+State-Space Model: x'' = A*x + B*u
+Output: y = C*x + D*u
+State Variables: x = [x_f, x_f']
+Input: u = [r]
+```
+
+Note: The above model only accounts for translational movement along one dimension. Hence, next steps will be to expand this state space model to allow for more complex dynamics.
+
 ## Contents
 * `swingpy` contains the source code for the python package.
 * `tests` contains unit tests written with [pytest](https://docs.pytest.org/en/latest/).
 * `docs` (coming soon)
 
 ## Usage
-(Option 1)
 
-Install `swingpy` from PyPI (coming soon):
+(Option 1) (recommended for new python users)
+
+Run script on [Colaboratory](https://colab.research.google.com/drive/1w8QATZCc7FaVq6Re15yd_2i7QHLpkXWn)
+
+(Option 2) (coming soon)
+
+Install `swingpy` from PyPI:
 ```
 $ pip install swingpy
 ```
 
-(Option 2)
+(Option 3)
 
 Install `swingpy` from source code:
 ```
@@ -48,7 +81,7 @@ A sugar push plot can be generating using `matplotlib`. In a python IDE, import 
 >>> plt.show()
 ```
 
-(Option 3)
+(Option 4)
 
 Clone `swingpy`:
 ```
@@ -76,7 +109,7 @@ $ pytest -v
 5. Create a new Pull Request
 
 ## Developer notes
-This project is still very much in early development. The physics model in its current state only accounts for translational movement in one dimension. Hence, next steps will be to expand state space model to allow for more complex patterns.
+This project is still very much in early development.
 Future features in consideration include, but not limited to:
 - Animation plug-in for visualizing the pattern generators in real-time.
 - Parser for reading midi files

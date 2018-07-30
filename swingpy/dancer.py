@@ -3,13 +3,13 @@ import numpy as np
 
 class Follower(object):
     """
-                -> x_f  -> r
-                |       |
-         _______    k
-        |       |--/\/--|
-        |   m   |       |
-        |_______|--[=]--|
-                    c
+                -> x_f    -> r
+                |         |
+         _______     k
+        |       |---/\/---|
+        |   m   |         |
+        |_______|---[=]---|
+                     c
 
     Equation(s) of Motion: m*x_f'' = - k*x_f - c*x_f'' + k*r
     m: "mass" of follower
