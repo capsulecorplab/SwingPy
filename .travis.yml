@@ -12,12 +12,11 @@ python:
 # command to install dependencies
 install:
   - pip install --upgrade pip
-  - pip install numpy
-  - pip install scipy
   - pip install pytest
-  - python setup.py install
-  # - pip install coverage
-  # - pip install python-coveralls
-  # - pip install pytest-cov# command to run tests
+  - pip install coverage
+  - pip install python-coveralls
+  - pip install pytest-cov # command to run tests
+  - pip install -r requirements.txt
 script:
-  - pytest -v # or py.test for Python versions 3.5 and below
+  - python setup.py install
+  - pytest -v --cov-report term-missing --cov=swingpy # or py.test for Python versions 3.5 and below
