@@ -60,10 +60,7 @@ class Follower(Dancer):
 
     def __init__(self):
         "system parameters that dictate response dynamics of a follower"
-        self._wn = 2*_np.pi  # natural frequency: wn = sqrt(k/m)
-        self._z = 1  # damping ratio: z = c/(2*wn*m)
-        self._dt = 0.01  # interval for discrete time step, dt
-        self._tau = 2*self._z*self._wn  # time constant: tau = c/k = 2*z/wn
+        super().__init__()
 
     def sugarpush(self):
         """returns multiple 1D arrays:
@@ -72,20 +69,22 @@ class Follower(Dancer):
         u: input - position of post
         """
         count = 6
-        sys_tf = _signal.lti(
-                             [self._wn**2],
-                             [1, 2*self._z*self._wn, self._wn**2])
-        t = _np.arange(0, count, self._dt)  # 6-count
+        A = _np.array([[0, 1], [-self.wn**2, -2*self.z*self.wn]])
+        B = _np.array([[0], [self.wn**2]])
+        C = _np.array([[1, 0]])
+        D = _np.array([[0]])
+        sys = _signal.lti(A, B, C, D)
+        t = _np.arange(0, count, self.dt)  # 6-count
         # push-break
         u = _np.concatenate(
                             (_np.zeros(
-                                        int(1/self._dt)),
-                                _np.arange(0, 1, self._dt),
-                                _np.ones(2*int(1/self._dt)),
-                                _np.arange(1, 0, -self._dt),
-                                _np.zeros(int(1/self._dt))))
+                                        int(1/self.dt)),
+                                _np.arange(0, 1, self.dt),
+                                _np.ones(2*int(1/self.dt)),
+                                _np.arange(1, 0, -self.dt),
+                                _np.zeros(int(1/self.dt))))
         # lowpass = _signal.lti([.01],[1, .01])
-        tout, y, x = _signal.lsim(sys_tf, u, t)
+        tout, y, x = _signal.lsim(sys, u, t)
         return t, y, u
 
     @property
