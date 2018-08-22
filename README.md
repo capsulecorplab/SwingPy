@@ -5,6 +5,7 @@
 The goal of this project is to mathematically model the physics of west coast swing dance patterns, in order to generate new combinations of patterns and to uncover why certain combinations or stylizations of patterns are better suited for musicality.
 
 [![Build Status](https://travis-ci.com/capsulecorplab/SwingPy.svg?branch=dev)](https://travis-ci.com/capsulecorplab/SwingPy)
+[![Coverage Status](https://coveralls.io/repos/github/capsulecorplab/SwingPy/badge.svg)](https://coveralls.io/github/capsulecorplab/SwingPy?branch=dev)
 
 ## Background
 
