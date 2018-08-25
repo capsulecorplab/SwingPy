@@ -16,7 +16,7 @@ West Coast Swing (WCS) is a style of partner-dance, danced to a variety of music
 The mathematical model currently consists of a mass-spring-damper system, captured in the following free-body diagram
 
 ```
-            -> x_f    -> r
+            --> x_f   --> r
             |         |
      _______     k
     |       |---/\/---|
@@ -26,8 +26,8 @@ The mathematical model currently consists of a mass-spring-damper system, captur
 
 Equation(s) of Motion: m*x_f'' = - k*x_f - c*x_f'' + k*r
 m: 'mass' of follower
-x_f: follower's deviation from initial position along slot
-r: deviation from initial position of post along slot
+x_f: follower's travel-distance from initial position along slot
+r: travel-distance from initial position of post along slot
 k: 'stiffness' in connection
 c: damping coefficient in connection
 
@@ -66,17 +66,17 @@ $ pip install git+https://github.com/capsulecorplab/SwingPy.git
 
 A sugar push plot can be generating using `matplotlib`. In a python IDE, import `swingpy` as a python package:
 ```
->>> import swingpy
+>>> from swingpy import wcs
 >>> import matplotlib.pyplot as plt
 
->>> jill = swingpy.Follower()
->>> t, y, u = jill.sugarpush()
+>>> jnj = wcs.OpenPosition()
+>>> t, y, u = jnj.sugarpush()
 
 >>> plt.plot(t, u)
 >>> plt.plot(t, y)
 >>> plt.grid(which='major')
 >>> plt.title('push-break')
->>> plt.ylabel('travel distance (w.r.t. initial-conditions)')
+>>> plt.ylabel('travel-distance (w.r.t. initial-conditions)')
 >>> plt.xlabel('count')
 >>> plt.legend(['Post','Follower'])
 >>> plt.show()
@@ -89,10 +89,10 @@ Clone `swingpy`:
 $ git clone https://github.com/capsulecorplab/SwingPy.git
 ```
 
-Generate plot by running `dancer.py` as a python script:
+Generate plot by running `wcs.py` as a python script:
 ```
-$ cd SwingPy/swingpy
-$ python3 dancer.py
+$ cd SwingPy
+$ python3 swingpy/wcs.py
 ```
 
 Tests can also be run using pytest from root project directory:

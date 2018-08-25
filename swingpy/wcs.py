@@ -4,8 +4,33 @@ import numpy as _np
 from scipy import signal as _signal
 
 
-class Dancer(_ABC):
-    "abstract base class for leaders and followers"
+class State(_ABC):
+    """
+    abstract base class for all leader-follower states
+
+    Working Model
+    -------------
+
+                --> x_f   --> r
+                |         |
+         _______     k
+        |       |---/\/---|
+        |   m   |         |
+        |_______|---[=]---|
+                     c
+
+    Equation(s) of Motion: m*x_f'' = - k*x_f - c*x_f'' + k*r
+    m: "mass" of follower
+    x_f: follower's travel-distance from initial position along slot
+    r: travel-distance from initial position of post along slot
+    k: "stiffness" in connection
+    c: damping coefficient in connection
+
+    State-Space Model: x'' = A*x + B*u
+    Output: y = C*x + D*u
+    State Variables: x = [x_f, x_f']
+    Input: u = [r]
+    """
 
     def __init__(self):
         "system parameters that dictate partner response dynamics"
@@ -14,8 +39,15 @@ class Dancer(_ABC):
         self._dt = 0.01  # interval for discrete time step, dt
         self._tau = 2*self.z*self.wn  # time constant: tau = c/k = 2*z/wn
 
+        # State space representation
+        A = _np.array([[0, 1], [-self.wn**2, -2*self.z*self.wn]])
+        B = _np.array([[0], [self.wn**2]])
+        C = _np.array([[1, 0]])
+        D = _np.array([[0]])
+        self._sys = _signal.lti(A, B, C, D)
+
     @_abstractproperty
-    def role(self):
+    def state(self):
         pass
 
     @property
@@ -35,27 +67,9 @@ class Dancer(_ABC):
         return self._tau
 
 
-class Follower(Dancer):
+class OpenPosition(State):
     """
-                -> x_f    -> r
-                |         |
-         _______     k
-        |       |---/\/---|
-        |   m   |         |
-        |_______|---[=]---|
-                     c
-
-    Equation(s) of Motion: m*x_f'' = - k*x_f - c*x_f'' + k*r
-    m: "mass" of follower
-    x_f: follower's deviation from initial position along slot
-    r: deviation from initial position of post along slot
-    k: "stiffness" in connection
-    c: damping coefficient in connection
-
-    State-Space Model: x'' = A*x + B*u
-    Output: y = C*x + D*u
-    State Variables: x = [x_f, x_f']
-    Input: u = [r]
+    Contains all patterns that can be performed from open position
     """
 
     def __init__(self):
@@ -69,13 +83,7 @@ class Follower(Dancer):
         u: input - position of post
         """
         count = 6
-        A = _np.array([[0, 1], [-self.wn**2, -2*self.z*self.wn]])
-        B = _np.array([[0], [self.wn**2]])
-        C = _np.array([[1, 0]])
-        D = _np.array([[0]])
-        sys = _signal.lti(A, B, C, D)
         t = _np.arange(0, count, self.dt)  # 6-count
-        # push-break
         u = _np.concatenate(
                             (_np.zeros(
                                         int(1/self.dt)),
@@ -83,24 +91,36 @@ class Follower(Dancer):
                                 _np.ones(2*int(1/self.dt)),
                                 _np.arange(1, 0, -self.dt),
                                 _np.zeros(int(1/self.dt))))
-        # lowpass = _signal.lti([.01],[1, .01])
-        tout, y, x = _signal.lsim(sys, u, t)
+        tout, y, x = _signal.lsim(self._sys, u, t)
         return t, y, u
 
     @property
-    def role(self):
-        return self.__class__.__name__.lower()
+    def state(self):
+        return self.__class__.__name__
+
+
+class ClosedPosition(State):
+    """
+    Contains all patterns that can be performed from closed position
+    """
+    pass
+
+
+class StateMachine:
+    pass
 
 
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
-    jill = Follower()
-    t, y, u = jill.sugarpush()
+
+    jnj = OpenPosition()
+    t, y, u = jnj.sugarpush()
+
     plt.plot(t, u)
     plt.plot(t, y)
     plt.grid(which='major')
     plt.title('push-break')
-    plt.ylabel('travel distance (w.r.t. initial-conditions)')
+    plt.ylabel('travel-distance (w.r.t. initial-conditions)')
     plt.xlabel('count')
     plt.legend(['Post', 'Follower'])
     plt.show()
