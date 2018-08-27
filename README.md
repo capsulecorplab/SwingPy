@@ -2,8 +2,10 @@
 
 > A west coast swing dance pattern generator written in python.
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Build Status](https://travis-ci.com/capsulecorplab/SwingPy.svg?branch=dev)](https://travis-ci.com/capsulecorplab/SwingPy)
 [![Coverage Status](https://coveralls.io/repos/github/capsulecorplab/SwingPy/badge.svg)](https://coveralls.io/github/capsulecorplab/SwingPy?branch=dev)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 The goal of this project is to mathematically model the physics of west coast swing dance patterns, in order to generate new combinations of patterns and to uncover why certain combinations or stylizations of patterns are better suited for musicality.
 
