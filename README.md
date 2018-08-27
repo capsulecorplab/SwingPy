@@ -48,6 +48,14 @@ Note: The above model only accounts for translational movement along one dimensi
 * `tests` contains unit tests written with [pytest](https://docs.pytest.org/en/latest/).
 * `docs` (coming soon)
 
+## Development pipeline
+This project is still very much in early development. Future features in consideration include, but not limited to:
+- Animation plug-in for visualizing the pattern generators in real-time.
+- Parser for reading midi files
+- Some sort of GUI
+
+For any questions, comments, or feature requests, please feel free to submit a [new issue](https://github.com/capsulecorplab/SwingPy/issues/new).
+
 ## Usage
 
 (Option 1) (recommended for new python users)
@@ -107,17 +115,10 @@ $ pytest -v
 
 ## Contribute
 
+Optional (but recommended for viewing GitHub issues): Install the [ZenHub for GitHub](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd?hl=en-US) chrome extension.
+
 1. Fork it (<https://github.com/yourusername/SwingPy/fork>)
 2. Create your feature branch (`git checkout -b feature/logarithms`)
 3. Commit your changes (`git commit -am 'Add some logarithms'`)
 4. Push to the branch (`git push origin feature/logarithms`)
 5. Create a new Pull Request
-
-## Developer notes
-This project is still very much in early development.
-Future features in consideration include, but not limited to:
-- Animation plug-in for visualizing the pattern generators in real-time.
-- Parser for reading midi files
-- Some sort of GUI
-
-For any questions, comments, or suggestions (s.a. features, use cases, or design patterns), please feel free to submit a [new issue](https://github.com/capsulecorplab/SwingPy/issues/new).
