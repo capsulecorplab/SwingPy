@@ -2,10 +2,12 @@
 
 > A west coast swing dance pattern generator written in python.
 
-The goal of this project is to mathematically model the physics of west coast swing dance patterns, in order to generate new combinations of patterns and to uncover why certain combinations or stylizations of patterns are better suited for musicality.
-
 [![Build Status](https://travis-ci.com/capsulecorplab/SwingPy.svg?branch=dev)](https://travis-ci.com/capsulecorplab/SwingPy)
 [![Coverage Status](https://coveralls.io/repos/github/capsulecorplab/SwingPy/badge.svg)](https://coveralls.io/github/capsulecorplab/SwingPy?branch=dev)
+
+The goal of this project is to mathematically model the physics of west coast swing dance patterns, in order to generate new combinations of patterns and to uncover why certain combinations or stylizations of patterns are better suited for musicality.
+
+![](push-break_dynamics.png)
 
 ## Background
 
@@ -13,7 +15,7 @@ West Coast Swing (WCS) is a style of partner-dance, danced to a variety of music
 
 ## Model Formulation
 
-The mathematical model currently consists of a mass-spring-damper system, captured in the following free-body diagram
+The leader's post, in connection with the follower, are modeled as a critically damped mass-spring-damper system (see free-body diagram below)
 
 ```
             --> x_f   --> r
