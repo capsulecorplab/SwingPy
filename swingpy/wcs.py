@@ -35,7 +35,7 @@ class State(_ABC):
     def __init__(self):
         "system parameters that dictate partner response dynamics"
         self._wn = 2*_np.pi  # natural frequency: wn = sqrt(k/m)
-        self._z = 1  # damping ratio: z = c/(2*wn*m)
+        self._z = 0.7  # damping ratio: z = c/(2*wn*m)
         self._dt = 0.01  # interval for discrete time step, dt
         self._tau = 2*self.z*self.wn  # time constant: tau = c/k = 2*z/wn
 

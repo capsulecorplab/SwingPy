@@ -12,9 +12,9 @@ def jnj():
 def test_system_parameters(jnj):
     assert jnj.state == 'OpenPosition'
     assert jnj.wn == 2*pi
-    assert jnj.z == 1
+    assert jnj.z == 0.7
     assert jnj.dt == 0.01
-    assert jnj.tau == 2*1*2*pi
+    assert jnj.tau == 2*0.7*2*pi
 
 
 def test_sugarpush(jnj):
@@ -28,7 +28,7 @@ def test_sugarpush(jnj):
             # response has reached 1-1/e of r by time constant
             assert yi > 1-1/e and yi < 1.1-1/e
         if ti > 2.5 and ti < 3.5:
-            assert yi > 0.9 and yi < 1
+            assert yi > 0.9 and yi < 1.1
         if ti > 4+jnj.tau and ti <= 4.1+jnj.tau:
             # response has reached 1-1/e of r by time constant
             assert yi > 1-1/e and yi < 1.1-1/e
