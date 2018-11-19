@@ -1,13 +1,13 @@
 # SwingPy
 
-> A west coast swing state machine written in python.
+> A west coast swing simulator written in python.
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://travis-ci.com/capsulecorplab/SwingPy.svg?branch=dev)](https://travis-ci.com/capsulecorplab/SwingPy)
 [![Coverage Status](https://coveralls.io/repos/github/capsulecorplab/SwingPy/badge.svg)](https://coveralls.io/github/capsulecorplab/SwingPy?branch=dev)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-The goal of this project is to model west coast swing as a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), in effort to study common dance patterns, as well as predict or generate new possible combinations or stylizations of patterns.
+The goal of this project is to simulate west coast swing dance patterns, using a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine) as the basis for its mathematical model, in effort to study common dance patterns, as well as predict or generate new possible combinations or stylizations of dance patterns.
 
 ![](push-break_dynamics.png)
 
@@ -17,9 +17,15 @@ West Coast Swing (WCS) is a style of partner-dance, danced to a variety of music
 
 ## Working Model
 
-The leader's post, in connection with the follower, are modeled as an under-damped mass-spring-damper system (see free-body diagram below)
+The following state space model is used for defining a `State`; the attribute(s) which define the abstract base class for all "concrete" states.
+
+### State-space model
+
+The leader's post, in connection with the follower, are modeled as an under-damped mass-spring-damper system
 
 ```
+Free-body diagram
+
             --> x_f   --> r
             |         |
      _______     k
@@ -47,16 +53,16 @@ Note: The above model only accounts for translational movement along one dimensi
 - stylization
 
 ## Contents
-* `swingpy` contains the source code for the python package.
-* `tests` contains unit tests written with [pytest](https://docs.pytest.org/en/latest/).
-* `docs` (coming soon)
+* `swingpy/` contains the source code for the python package.
+* `tests/` contains unit tests written with [pytest](https://docs.pytest.org/en/latest/).
+* `docs/` (coming soon)
 
 ## Development pipeline
 This project is still very much in early development. Future enhancements in consideration include, but not limited to:
 - Ability to stocastically model any pair of west coast swing dancers, using a [Markov model](https://en.wikipedia.org/wiki/Markov_model).
 - Animation plug-in for visualizing the pattern generators in real-time.
 - Parser for reading midi files
-- Some sort of GUI
+- Some sort of GUI; need to wrap the state machine into a [Model-view-controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller).
 
 For any questions, comments, feature suggestions, and/or implementation strategies, please feel free to submit a [new issue](https://github.com/capsulecorplab/SwingPy/issues/new).
 
